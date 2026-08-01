@@ -454,6 +454,23 @@ canvas {
   .btn {
     width: 100%;
   }
+
+  .hero-cta .btn-primary {
+    width: 100%;
+    max-width: 100%;
+    min-height: 48px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 14px 24px;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    appearance: none;
+  }
 }
 
 /* ==========================================
