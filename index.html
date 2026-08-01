@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinematic Scroll Experience</title>
+  <meta name="description" content="A smooth and interactive cinematic experience with scroll-based animation.">
+  <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="logo">Esy Tech Creative</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="menu-hamburger" id="menu-hamburger-btn" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="4" y1="6" x2="20" y2="6" />
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="18" x2="20" y2="18" />
+      </svg>
+    </button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero-section">
+    <div class="hero-content">
+      <p class="hero-tag">AI &bull; INFRASTRUCTURE &bull; DIGITAL EXPERIENCE</p>
+      <h1 class="hero-title">
+        <span>Technology.</span>
+        <span>Intelligence.</span>
+        <span class="highlight">Creation.</span>
+      </h1>
+      <p class="hero-desc">
+        We build intelligent systems, digital experiences, and technological infrastructure for modern businesses.
+      </p>
+      <div class="hero-cta">
+        <a href="#services" class="btn btn-primary">Explore our services</a>
+        <a href="#projects" class="btn btn-secondary">Start a project</a>
+      </div>
+    </div>
+
+    <!-- Glass Bubbles Navigation Container -->
+    <div class="bubbles-nav-container" id="bubbles-nav-container">
+      <a href="#about" class="bubble-menu-item b-about" id="about-bubble-trigger" role="button" aria-haspopup="dialog" aria-controls="about-panel-overlay" aria-expanded="false" data-x="15" data-y="22">
+        <div class="bubble-wrapper">
+          <div class="bubble-bg"></div>
+          <div class="bubble-content">
+            <span class="bubble-dot"></span>
+            <span class="bubble-text">About</span>
+            <div class="bubble-shine"></div>
+          </div>
+        </div>
+      </a>
+      <a href="#projects" class="bubble-menu-item b-projects" data-x="48" data-y="18">
+        <div class="bubble-wrapper">
+          <div class="bubble-bg"></div>
+          <div class="bubble-content">
+            <span class="bubble-dot"></span>
+            <span class="bubble-text">Projects</span>
+            <div class="bubble-shine"></div>
+          </div>
+        </div>
+      </a>
+      <a href="#services" class="bubble-menu-item b-services" id="services-bubble-trigger" role="button" aria-haspopup="dialog" aria-controls="services-panel-overlay" aria-expanded="false" data-x="10" data-y="70">
+        <div class="bubble-wrapper">
+          <div class="bubble-bg"></div>
+          <div class="bubble-content">
+            <span class="bubble-dot"></span>
+            <span class="bubble-text">Services</span>
+            <div class="bubble-shine"></div>
+          </div>
+        </div>
+      </a>
+      <a href="#contact" class="bubble-menu-item b-contact" data-x="38" data-y="75">
+        <div class="bubble-wrapper">
+          <div class="bubble-bg"></div>
+          <div class="bubble-content">
+            <span class="bubble-dot"></span>
+            <span class="bubble-text">Contact</span>
+            <div class="bubble-shine"></div>
+          </div>
+        </div>
+      </a>
+      <a href="#blog" class="bubble-menu-item b-blog" data-x="78" data-y="25">
+        <div class="bubble-wrapper">
+          <div class="bubble-bg"></div>
+          <div class="bubble-content">
+            <span class="bubble-dot"></span>
+            <span class="bubble-text">Blog</span>
+            <div class="bubble-shine"></div>
+          </div>
+        </div>
+      </a>
+      <a href="#select" class="bubble-menu-item b-select" id="select-bubble-trigger" role="button" aria-haspopup="dialog" aria-controls="select-panel-overlay" aria-expanded="false" data-x="72" data-y="68">
+        <div class="bubble-wrapper">
+          <div class="bubble-bg"></div>
+          <div class="bubble-content">
+            <span class="bubble-dot"></span>
+            <span class="bubble-text">Select</span>
+            <div class="bubble-shine"></div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Premium Loader Overlay -->
+  <div class="loader-overlay" id="loader-overlay">
+    <div class="loader-container">
+      <svg class="progress-ring" width="180" height="180">
+        <circle class="progress-ring-circle-bg" cx="90" cy="90" r="80" />
+        <circle class="progress-ring-circle" cx="90" cy="90" r="80" />
+      </svg>
+      <div class="loader-text-container">
+        <span class="loader-percentage" id="loader-percentage">0%</span>
+        <span class="loader-label">Loading</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Canvas Viewport -->
+  <div class="canvas-container">
+    <canvas id="scroll-canvas"></canvas>
+  </div>
+
+  <!-- Scroll Narrative Story Layer -->
+  <div class="scroll-story-layer" id="scroll-story-layer">
+    
+    <!-- Chapter 1: Manifesto -->
+    <section class="story-chapter story-chapter--right" data-start="0.15" data-peak-start="0.18" data-peak-end="0.25" data-end="0.28" aria-hidden="true">
+      <div class="story-chapter-content">
+        <span class="story-micro-label">MORE THAN TECHNOLOGY</span>
+        <h2 class="story-title">We transform complexity into clarity.</h2>
+        <div class="story-line"></div>
+        <p class="story-text">Technology should not create more problems. It should simplify operations, improve experiences, and help businesses move forward.</p>
+      </div>
+    </section>
+
+    <!-- Chapter 2: Three Pillars -->
+    <section class="story-chapter story-chapter--right" data-start="0.29" data-peak-start="0.32" data-peak-end="0.42" data-end="0.44" aria-hidden="true">
+      <div class="story-chapter-content">
+        <span class="story-micro-label">OUR FOUNDATION</span>
+        <h2 class="story-title">Three disciplines. One complete vision.</h2>
+        <div class="story-pillars">
+          <div class="story-pillar" data-pillar="1">
+            <span class="story-pillar-num">01</span>
+            <div class="story-pillar-body">
+              <h5>Technology</h5>
+              <p>Reliable systems, applications, networks, and technical environments.</p>
+            </div>
+          </div>
+          <div class="story-pillar" data-pillar="2">
+            <span class="story-pillar-num">02</span>
+            <div class="story-pillar-body">
+              <h5>Intelligence</h5>
+              <p>Artificial intelligence and automation applied to real business needs.</p>
+            </div>
+          </div>
+          <div class="story-pillar" data-pillar="3">
+            <span class="story-pillar-num">03</span>
+            <div class="story-pillar-body">
+              <h5 class="highlight-magenta">Creation</h5>
+              <p>Digital experiences that combine visual impact, usability, and purpose.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 3: Connected Capabilities -->
+    <section class="story-chapter story-chapter--right" data-start="0.44" data-peak-start="0.47" data-peak-end="0.57" data-end="0.59" aria-hidden="true">
+      <div class="story-chapter-content">
+        <span class="story-micro-label">WHAT WE CONNECT</span>
+        <h2 class="story-title">Digital solutions built as one ecosystem.</h2>
+        <p class="story-text">Strategy, development, infrastructure, and design working together from concept to deployment.</p>
+        <div class="story-capsules-grid">
+          <div class="story-capsule-row" data-row="1">
+            <span class="story-capsule">Web Development</span>
+            <span class="story-capsule">Custom Applications</span>
+          </div>
+          <div class="story-capsule-row" data-row="2">
+            <span class="story-capsule">Artificial Intelligence</span>
+            <span class="story-capsule">Automation</span>
+          </div>
+          <div class="story-capsule-row" data-row="3">
+            <span class="story-capsule">Cloud Infrastructure</span>
+            <span class="story-capsule">Network Solutions</span>
+          </div>
+          <div class="story-capsule-row" data-row="4">
+            <span class="story-capsule">Creative Experiences</span>
+            <span class="story-capsule">Technical Support</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 4: Process -->
+    <section class="story-chapter story-chapter--center" data-start="0.59" data-peak-start="0.62" data-peak-end="0.72" data-end="0.74" aria-hidden="true">
+      <div class="story-chapter-content">
+        <span class="story-micro-label">HOW WE WORK</span>
+        <h2 class="story-title">From challenge to working solution.</h2>
+        
+        <div class="story-process-timeline">
+          <div class="story-process-line-bg">
+            <div class="story-process-line-progress"></div>
+          </div>
+          
+          <div class="story-process-steps">
+            <div class="story-process-step" data-step="1">
+              <div class="story-process-dot"></div>
+              <span class="story-process-num">01</span>
+              <h5>Understand</h5>
+              <p>We identify the real business need, technical context, and project objectives.</p>
+            </div>
+            
+            <div class="story-process-step" data-step="2">
+              <div class="story-process-dot"></div>
+              <span class="story-process-num">02</span>
+              <h5>Design</h5>
+              <p>We define the experience, architecture, visual direction, and technical approach.</p>
+            </div>
+            
+            <div class="story-process-step" data-step="3">
+              <div class="story-process-dot"></div>
+              <span class="story-process-num">03</span>
+              <h5>Build</h5>
+              <p>We develop, integrate, test, and refine every part of the solution.</p>
+            </div>
+            
+            <div class="story-process-step" data-step="4">
+              <div class="story-process-dot"></div>
+              <span class="story-process-num">04</span>
+              <h5>Deploy</h5>
+              <p>We launch, optimize, and provide the technical support needed for continuity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 5: Differential -->
+    <section class="story-chapter story-chapter--right" data-start="0.73" data-peak-start="0.76" data-peak-end="0.84" data-end="0.86" aria-hidden="true">
+      <div class="story-chapter-content">
+        <span class="story-micro-label">WHY ESY TECH CREATIVE</span>
+        <h2 class="story-title">One vision from infrastructure to experience.</h2>
+        <p class="story-text">Most projects separate design, development, infrastructure, and technical support. We connect them to create solutions that are visually strong, technically reliable, and ready for real-world use.</p>
+        <div class="story-indicators">
+          <div class="story-indicator-item">
+            <span class="story-indicator-dot"></span>
+            <span class="story-indicator-text">Technical precision</span>
+          </div>
+          <div class="story-indicator-item">
+            <span class="story-indicator-dot"></span>
+            <span class="story-indicator-text">Creative execution</span>
+          </div>
+          <div class="story-indicator-item">
+            <span class="story-indicator-dot"></span>
+            <span class="story-indicator-text">Business understanding</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 6: Presence -->
+    <section class="story-chapter story-chapter--right" data-start="0.85" data-peak-start="0.87" data-peak-end="0.92" data-end="0.94" aria-hidden="true">
+      <div class="story-chapter-content">
+        <span class="story-micro-label">BASED IN FRANCE. BUILT FOR EVERYWHERE.</span>
+        <h2 class="story-title">Local expertise. International reach.</h2>
+        <p class="story-text">Based in Paris and available for remote projects, ESY TECH CREATIVE works with businesses, professionals, and brands seeking modern and reliable digital solutions.</p>
+        <div class="story-bullets-grid">
+          <div class="story-bullet-item">
+            <span class="story-bullet-dot"></span>
+            <span>Paris, France</span>
+          </div>
+          <div class="story-bullet-item">
+            <span class="story-bullet-dot"></span>
+            <span>Remote worldwide</span>
+          </div>
+          <div class="story-bullet-item">
+            <span class="story-bullet-dot"></span>
+            <span>Multidisciplinary expertise</span>
+          </div>
+          <div class="story-bullet-item">
+            <span class="story-bullet-dot"></span>
+            <span>Business-focused solutions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 7: Final CTA -->
+    <section class="story-chapter story-chapter--center" data-start="0.93" data-peak-start="0.96" data-peak-end="1.00" data-end="1.00" aria-hidden="true">
+      <div class="story-chapter-content">
+        <span class="story-micro-label">YOUR NEXT PROJECT STARTS HERE</span>
+        <h2 class="story-title">Let’s create something intelligent, reliable, and memorable.</h2>
+        <p class="story-text">Tell us about your idea, your business, or the challenge you want to solve.</p>
+        <div class="story-cta-buttons">
+          <a href="#contact" class="btn btn-primary story-cta-btn">Start a project</a>
+          <a href="#services" class="btn btn-secondary story-cta-btn">Explore our services</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Smooth Scroll Depth Spacer -->
+  <div class="scroll-spacer"></div>
+
+  <!-- Minimalist HUD / UI Layer -->
+  <div class="ui-layer">
+    <div class="scroll-indicator" id="scroll-indicator">
+      <p>Scroll to explore</p>
+      <div class="mouse-icon">
+        <div class="mouse-wheel"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Glassmorphic Drawer Menu -->
+  <div class="mobile-menu-drawer" id="mobile-menu-drawer">
+    <div class="drawer-close" id="drawer-close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <nav class="drawer-nav">
+      <a href="#about" class="drawer-link"><span class="drawer-dot"></span>About</a>
+      <a href="#projects" class="drawer-link"><span class="drawer-dot"></span>Projects</a>
+      <a href="#services" class="drawer-link"><span class="drawer-dot"></span>Services</a>
+      <a href="#select" class="drawer-link"><span class="drawer-dot"></span>Select</a>
+      <a href="#contact" class="drawer-link"><span class="drawer-dot"></span>Contact</a>
+      <a href="#blog" class="drawer-link"><span class="drawer-dot"></span>Blog</a>
+    </nav>
+  </div>
+
+  <!-- About Editorial Glass Panel Overlay -->
+  <div class="about-panel-overlay" id="about-panel-overlay" role="dialog" aria-modal="true" aria-labelledby="about-panel-title" aria-hidden="true">
+    <div class="about-panel" id="about-panel">
+      <!-- Close Button -->
+      <button class="about-panel-close" id="about-panel-close" aria-label="Close About Panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="about-panel-content">
+        <div class="about-top-grid">
+          <!-- Coluna Esquerda -->
+          <div class="about-column-left">
+            <span class="about-micro-label">WHO WE ARE</span>
+            <h2 class="about-title" id="about-panel-title">About ESY TECH CREATIVE</h2>
+            
+            <div class="about-main-text">
+              <p><strong>ESY TECH CREATIVE</strong> is a multidisciplinary technology and creative studio focused on developing intelligent digital solutions for businesses, professionals, and brands.</p>
+              <p>We combine technology, design, infrastructure, artificial intelligence, and creative direction to build websites, applications, automation systems, network solutions, and premium digital experiences.</p>
+              <p>Our work goes beyond visual presentation. We develop complete solutions that connect strategy, performance, reliability, and innovation.</p>
+              <p>From the first idea to deployment and technical support, we help transform business challenges into clear, modern, and scalable digital solutions.</p>
+            </div>
+
+            <blockquote class="about-highlight-phrase">
+              Technology should simplify processes, strengthen businesses, and create meaningful experiences.
+            </blockquote>
+
+            <figure class="about-desktop-visual" aria-hidden="true">
+              <img src="assets/about-technology-visual.png" alt="" width="941" height="1672" loading="lazy" decoding="async">
+            </figure>
+
+            <div class="about-cta-container">
+              <button class="btn btn-primary" id="about-cta-services">Discover our services</button>
+            </div>
+          </div>
+
+          <!-- Coluna Direita -->
+          <div class="about-column-right">
+            <!-- Core Capabilities Section -->
+            <div class="about-section">
+              <h3 class="about-section-title">Core Capabilities</h3>
+              <div class="about-chips-container">
+                <span class="about-chip">Web Development</span>
+                <span class="about-chip">Custom Web Applications</span>
+                <span class="about-chip">Artificial Intelligence</span>
+                <span class="about-chip">Business Automation</span>
+                <span class="about-chip">Cloud Infrastructure</span>
+                <span class="about-chip">Network Solutions</span>
+                <span class="about-chip">UI/UX Design</span>
+                <span class="about-chip">Creative Direction</span>
+                <span class="about-chip">Digital Production</span>
+                <span class="about-chip">Technical Support</span>
+              </div>
+            </div>
+
+            <!-- Mission, Vision Grid -->
+            <div class="about-grid-mv">
+              <div class="about-mv-box">
+                <h4>Mission</h4>
+                <p>To transform complex technology into practical, efficient, and valuable solutions for modern businesses.</p>
+              </div>
+              <div class="about-mv-box">
+                <h4>Vision</h4>
+                <p>To create digital systems and experiences where technology, intelligence, infrastructure, and creativity work together.</p>
+              </div>
+            </div>
+
+            <!-- Our Approach Section -->
+            <div class="about-section">
+              <h4>Our Approach</h4>
+              <p>We combine strategic thinking, technical precision, creative execution, and close collaboration to deliver solutions adapted to the real needs of each project.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology & Expertise Section -->
+        <div class="about-section about-tech-fullwidth">
+            <h3 class="about-section-title">Technology & Expertise</h3>
+            <div class="about-tech-list">
+              
+              <div class="about-tech-category">
+                <h5>Web & Interface</h5>
+                <div class="about-tech-tags">
+                  <span class="about-tech-tag">Next.js</span>
+                  <span class="about-tech-tag">React</span>
+                  <span class="about-tech-tag">TypeScript</span>
+                  <span class="about-tech-tag">Tailwind CSS</span>
+                  <span class="about-tech-tag">Responsive Design</span>
+                  <span class="about-tech-tag">UI/UX</span>
+                </div>
+              </div>
+
+              <div class="about-tech-category">
+                <h5>Systems & Integration</h5>
+                <div class="about-tech-tags">
+                  <span class="about-tech-tag">Custom Web Applications</span>
+                  <span class="about-tech-tag">APIs</span>
+                  <span class="about-tech-tag">Databases</span>
+                  <span class="about-tech-tag">Dashboards</span>
+                  <span class="about-tech-tag">Workflow Integration</span>
+                </div>
+              </div>
+
+              <div class="about-tech-category">
+                <h5>AI & Automation</h5>
+                <div class="about-tech-tags">
+                  <span class="about-tech-tag">AI Assistants</span>
+                  <span class="about-tech-tag">Intelligent Workflows</span>
+                  <span class="about-tech-tag">Business Automation</span>
+                  <span class="about-tech-tag">Process Optimization</span>
+                </div>
+              </div>
+
+              <div class="about-tech-category">
+                <h5>Cloud & Infrastructure</h5>
+                <div class="about-tech-tags">
+                  <span class="about-tech-tag">Microsoft Azure</span>
+                  <span class="about-tech-tag">Linux</span>
+                  <span class="about-tech-tag">Docker</span>
+                  <span class="about-tech-tag">Hosting</span>
+                  <span class="about-tech-tag">Deployment</span>
+                  <span class="about-tech-tag">Cloud Environments</span>
+                </div>
+              </div>
+
+              <div class="about-tech-category">
+                <h5>Networks & Technical Solutions</h5>
+                <div class="about-tech-tags">
+                  <span class="about-tech-tag">Network Infrastructure</span>
+                  <span class="about-tech-tag">VLAN</span>
+                  <span class="about-tech-tag">Connectivity</span>
+                  <span class="about-tech-tag">Equipment Deployment</span>
+                  <span class="about-tech-tag">Technical Troubleshooting</span>
+                  <span class="about-tech-tag">Business IT Support</span>
+                </div>
+              </div>
+
+              <div class="about-tech-category">
+                <h5>Creative Digital Production</h5>
+                <div class="about-tech-tags">
+                  <span class="about-tech-tag">Creative Direction</span>
+                  <span class="about-tech-tag">Cinematic Web Experiences</span>
+                  <span class="about-tech-tag">Motion Concepts</span>
+                  <span class="about-tech-tag">Visual Storytelling</span>
+                  <span class="about-tech-tag">Premium Digital Presentation</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Editorial Glass Panel Overlay -->
+  <div class="services-panel-overlay" id="services-panel-overlay" role="dialog" aria-modal="true" aria-labelledby="services-panel-title" aria-hidden="true">
+    <div class="services-panel" id="services-panel">
+      <button class="services-panel-close" id="services-panel-close" aria-label="Close Services Panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="services-panel-content">
+        <header class="services-panel-header">
+          <span class="services-micro-label">WHAT WE CREATE</span>
+          <h2 class="services-panel-title" id="services-panel-title">Complete solutions for modern brands and businesses</h2>
+          <p class="services-panel-intro">From infrastructure to visual communication, we connect technology, strategy, and creativity to deliver solutions tailored to the real needs of each project.</p>
+          <div class="services-filter-nav" aria-label="Service categories">
+            <button class="services-filter-btn active" type="button" data-filter="all">All</button>
+            <button class="services-filter-btn" type="button" data-filter="tecnologia">Technology</button>
+            <button class="services-filter-btn" type="button" data-filter="infraestrutura">Infrastructure</button>
+            <button class="services-filter-btn" type="button" data-filter="marketing">Marketing</button>
+            <button class="services-filter-btn" type="button" data-filter="conteudo">Creative Content</button>
+          </div>
+        </header>
+
+        <section class="services-group" aria-labelledby="services-group-tech">
+          <h3 class="services-group-title" id="services-group-tech">Technology & Systems</h3>
+          <div class="services-grid">
+            <article class="service-card" data-category="tecnologia">
+              <figure class="service-card-visual">
+                <img src="assets/images/services/websites-inteligentes.webp" alt="Abstract digital structure representing intelligent websites" width="1200" height="800" loading="lazy" decoding="async" onerror="this.hidden=true">
+                <span class="service-card-number">01</span>
+              </figure>
+              <div class="service-card-content">
+                <span class="service-card-category">Technology</span>
+                <h4>Intelligent Websites</h4>
+                <p>We create modern, responsive, and high-performance websites designed to strengthen brands, present services clearly, and turn visitors into real business opportunities.</p>
+                <div class="service-card-tags">
+                  <span>Corporate Websites</span><span>Landing Pages</span><span>Portfolios</span><span>Multilingual Websites</span><span>Technical SEO</span><span>Next.js</span><span>React</span>
+                </div>
+                <button class="service-card-action" type="button" data-service="websites-inteligentes">Explore service</button>
+              </div>
+            </article>
+
+            <article class="service-card" data-category="tecnologia">
+              <figure class="service-card-visual">
+                <img src="assets/images/services/aplicacoes-web.webp" alt="Modular interface representing custom web applications" width="1200" height="800" loading="lazy" decoding="async" onerror="this.hidden=true">
+                <span class="service-card-number">02</span>
+              </figure>
+              <div class="service-card-content">
+                <span class="service-card-category">Technology</span>
+                <h4>Custom Web Applications</h4>
+                <p>We develop platforms, dashboards, client portals, and digital systems tailored to the specific needs of each business.</p>
+                <div class="service-card-tags">
+                  <span>Business Systems</span><span>Dashboards</span><span>Client Portals</span><span>Booking Systems</span><span>APIs</span><span>Databases</span>
+                </div>
+                <button class="service-card-action" type="button" data-service="aplicacoes-web">Explore service</button>
+              </div>
+            </article>
+
+            <article class="service-card" data-category="tecnologia">
+              <figure class="service-card-visual">
+                <img src="assets/images/services/ia-automacao.webp" alt="Intelligent network representing artificial intelligence and automation" width="1200" height="800" loading="lazy" decoding="async" onerror="this.hidden=true">
+                <span class="service-card-number">03</span>
+              </figure>
+              <div class="service-card-content">
+                <span class="service-card-category">Technology</span>
+                <h4>Artificial Intelligence & Automation</h4>
+                <p>We create intelligent assistants and automated workflows to reduce repetitive tasks, improve customer service, and optimize business processes.</p>
+                <div class="service-card-tags">
+                  <span>AI Assistants</span><span>Chatbots</span><span>Automation</span><span>Intelligent Workflows</span><span>Integrations</span><span>Process Optimization</span>
+                </div>
+                <button class="service-card-action" type="button" data-service="ia-automacao">Explore service</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="services-group" aria-labelledby="services-group-infra">
+          <h3 class="services-group-title" id="services-group-infra">Infrastructure & Operations</h3>
+          <div class="services-grid">
+            <article class="service-card" data-category="infraestrutura">
+              <figure class="service-card-visual">
+                <img src="assets/images/services/cloud-infraestrutura.webp" alt="Digital environment representing cloud and infrastructure" width="1200" height="800" loading="lazy" decoding="async" onerror="this.hidden=true">
+                <span class="service-card-number">04</span>
+              </figure>
+              <div class="service-card-content">
+                <span class="service-card-category">Infrastructure</span>
+                <h4>Cloud & Infrastructure</h4>
+                <p>We design and implement secure, reliable, and scalable technical environments for applications, services, and business operations.</p>
+                <div class="service-card-tags">
+                  <span>Microsoft Azure</span><span>Linux</span><span>Docker</span><span>Hosting</span><span>Deployment</span><span>Monitoring</span><span>Cloud Environments</span>
+                </div>
+                <button class="service-card-action" type="button" data-service="cloud-infraestrutura">Explore service</button>
+              </div>
+            </article>
+
+            <article class="service-card" data-category="infraestrutura">
+              <figure class="service-card-visual">
+                <img src="assets/images/services/redes-solucoes-tecnicas.webp" alt="Connected network representing technical network solutions" width="1200" height="800" loading="lazy" decoding="async" onerror="this.hidden=true">
+                <span class="service-card-number">05</span>
+              </figure>
+              <div class="service-card-content">
+                <span class="service-card-category">Infrastructure</span>
+                <h4>Networks & Technical Solutions</h4>
+                <p>We provide professional support for business networks, connectivity, equipment deployment, and the organization of technical environments.</p>
+                <div class="service-card-tags">
+                  <span>Network Infrastructure</span><span>VLAN</span><span>Connectivity</span><span>Equipment Deployment</span><span>Troubleshooting</span><span>Business IT Support</span>
+                </div>
+                <button class="service-card-action" type="button" data-service="redes-solucoes-tecnicas">Explore service</button>
+              </div>
+            </article>
+
+            <article class="service-card" data-category="marketing">
+              <figure class="service-card-visual">
+                <img src="assets/images/services/gestao-trafego.webp" alt="Performance interface representing paid traffic management" width="1200" height="800" loading="lazy" decoding="async" onerror="this.hidden=true">
+                <span class="service-card-number">06</span>
+              </figure>
+              <div class="service-card-content">
+                <span class="service-card-category">Marketing</span>
+                <h4>Paid Traffic Management</h4>
+                <p>We create and manage digital advertising campaigns focused on reaching the right audience, generating qualified opportunities, and improving return on investment.</p>
+                <div class="service-card-tags">
+                  <span>Meta Ads</span><span>Google Ads</span><span>Lead Generation</span><span>Remarketing</span><span>Audience Targeting</span><span>Campaign Optimization</span><span>Performance Reports</span>
+                </div>
+                <button class="service-card-action" type="button" data-service="gestao-trafego">Explore service</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="services-group" aria-labelledby="services-group-content">
+          <h3 class="services-group-title" id="services-group-content">Content & Experience</h3>
+          <div class="services-grid">
+            <article class="service-card" data-category="conteudo">
+              <figure class="service-card-visual">
+                <img src="assets/images/services/producao-video.webp" alt="Cinematic composition representing video production" width="1200" height="800" loading="lazy" decoding="async" onerror="this.hidden=true">
+                <span class="service-card-number">07</span>
+              </figure>
+              <div class="service-card-content">
+                <span class="service-card-category">Creative Content</span>
+                <h4>Video Production</h4>
+                <p>We produce professional and engaging videos for businesses, brands, events, products, and social media, from filming to final editing.</p>
+                <div class="service-card-tags">
+                  <span>Corporate Video</span><span>Reels</span><span>Events</span><span>Interviews</span><span>Editing</span><span>Color Grading</span><span>Motion Design</span>
+                </div>
+                <button class="service-card-action" type="button" data-service="producao-video">Explore service</button>
+              </div>
+            </article>
+
+            <article class="service-card" data-category="conteudo">
+              <figure class="service-card-visual">
+                <img src="assets/images/services/fotografia-mobile.webp" alt="Editorial composition representing mobile photography" width="1200" height="800" loading="lazy" decoding="async" onerror="this.hidden=true">
+                <span class="service-card-number">08</span>
+              </figure>
+              <div class="service-card-content">
+                <span class="service-card-category">Creative Content</span>
+                <h4>Mobile Photography</h4>
+                <p>We create professional photography using high-quality mobile equipment, combining agility, creative direction, and refined image editing.</p>
+                <div class="service-card-tags">
+                  <span>Portraits</span><span>Products</span><span>Events</span><span>Hospitality</span><span>Restaurants</span><span>Lifestyle</span><span>Image Editing</span>
+                </div>
+                <button class="service-card-action" type="button" data-service="fotografia-mobile">Explore service</button>
+              </div>
+            </article>
+
+            <article class="service-card" data-category="conteudo">
+              <figure class="service-card-visual">
+                <img src="assets/images/services/experiencias-digitais.webp" alt="Immersive interface representing creative digital experiences" width="1200" height="800" loading="lazy" decoding="async" onerror="this.hidden=true">
+                <span class="service-card-number">09</span>
+              </figure>
+              <div class="service-card-content">
+                <span class="service-card-category">Creative Content</span>
+                <h4>Creative Digital Experiences</h4>
+                <p>We develop premium digital experiences that combine design, movement, technology, and visual storytelling for modern brands.</p>
+                <div class="service-card-tags">
+                  <span>UI/UX</span><span>Animated Hero Sections</span><span>Motion Concepts</span><span>Creative Direction</span><span>Visual Storytelling</span><span>Interactive Experiences</span>
+                </div>
+                <button class="service-card-action" type="button" data-service="experiencias-digitais">Explore service</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="services-final-cta">
+          <span class="services-micro-label">LET'S CREATE TOGETHER</span>
+          <h3>Have a project in mind?</h3>
+          <p>Tell us about your business, your idea, or the challenge you want to solve. Together, we will identify the most suitable solution for your project.</p>
+          <div class="services-final-actions">
+            <button class="btn btn-primary" type="button" data-contact-action="start-project">Start a project</button>
+            <button class="btn btn-secondary" type="button" data-contact-action="talk">Talk to ESY TECH</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESY TECH Select Affiliate Recommendations Panel -->
+  <div class="select-panel-overlay" id="select-panel-overlay" role="dialog" aria-modal="true" aria-labelledby="select-panel-title" aria-hidden="true">
+    <div class="select-panel" id="select-panel">
+      <button class="select-panel-close" id="select-panel-close" aria-label="Close Select Panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="select-panel-content">
+        <header class="select-panel-header">
+          <span class="select-micro-label">CURATED TOOLS & EQUIPMENT</span>
+          <h2 class="select-panel-title" id="select-panel-title">ESY TECH Select</h2>
+          <p class="select-panel-intro">A curated selection of technology, creator tools, network equipment, and professional accessories chosen to support modern digital work.</p>
+          <p class="select-panel-support">Explore equipment and tools selected for web professionals, content creators, mobile photographers, videomakers, technical specialists, and modern businesses.</p>
+          <div class="select-affiliate-notice">
+            <span>AFFILIATE LINKS</span>
+            <p>Affiliate disclosure: Some links on this page are affiliate links. ESY TECH CREATIVE may receive a commission if you make a purchase through these links, at no additional cost to you.</p>
+          </div>
+          <div class="select-filter-nav" aria-label="Select product categories">
+            <button class="select-filter-btn active" type="button" data-filter="all">All</button>
+            <button class="select-filter-btn" type="button" data-filter="creator">Creator Gear</button>
+            <button class="select-filter-btn" type="button" data-filter="mobile-photo">Mobile Photography</button>
+            <button class="select-filter-btn" type="button" data-filter="video">Video Production</button>
+            <button class="select-filter-btn" type="button" data-filter="workstation">Workstation</button>
+            <button class="select-filter-btn" type="button" data-filter="network">Network & Infrastructure</button>
+            <button class="select-filter-btn" type="button" data-filter="lab">Cloud & Tech Lab</button>
+          </div>
+        </header>
+
+        <section class="select-products-grid" aria-label="Curated product recommendations">
+          <article class="select-product-card" data-category="creator">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/wireless-microphone.webp" alt="Compact wireless microphone for creator audio" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">ESY TECH PICK</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Creator Gear</span>
+              <h3>Compact Wireless Microphone</h3>
+              <p>A practical wireless audio solution for interviews, social content, presentations, and professional mobile video production.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Reels · Interviews · Mobile Video</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><!-- Replace data-affiliate-url with the real affiliate URL when enabling this action. --><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="video">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/mobile-gimbal.webp" alt="Mobile gimbal stabilizer for smooth smartphone video" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">CREATOR ESSENTIAL</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Video Production</span>
+              <h3>Mobile Gimbal Stabilizer</h3>
+              <p>Smooth stabilization for cinematic smartphone footage, moving shots, events, and professional social content.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Videomaking · Events · Reels</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="creator">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/portable-led-light.webp" alt="Portable LED video light for interviews and portraits" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">ESY TECH PICK</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Creator Gear</span>
+              <h3>Portable LED Video Light</h3>
+              <p>Compact lighting designed to improve portraits, interviews, product videos, and mobile content in different environments.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Video · Photography · Interviews</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="mobile-photo">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/mobile-lens-kit.webp" alt="Professional mobile lens kit for creative smartphone photography" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">MOBILE CREATOR</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Mobile Photography</span>
+              <h3>Professional Mobile Lens Kit</h3>
+              <p>A versatile lens system for expanding mobile photography possibilities, including portraits, wide shots, and creative detail.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Portraits · Products · Travel</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="mobile-photo">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/mobile-tripod.webp" alt="Compact mobile tripod for stable photo and video capture" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">CREATOR ESSENTIAL</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Mobile Photography</span>
+              <h3>Compact Mobile Tripod</h3>
+              <p>A stable and portable support for photography, video recording, interviews, live content, and product presentation.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Mobile Photo · Video · Live Content</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="mobile-photo">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/portable-photo-printer.webp" alt="Portable photo printer for instant event photography" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">BUSINESS IDEA</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Mobile Photography</span>
+              <h3>Portable Photo Printer</h3>
+              <p>A compact printing solution for events, tourism, hospitality, mobile photography services, and instant customer experiences.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Events · Tourism · Photography</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="workstation">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/external-ssd.webp" alt="High-speed external SSD for creative storage workflows" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">ESY TECH PICK</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Workstation</span>
+              <h3>High-Speed External SSD</h3>
+              <p>Fast and portable storage for video projects, photography, backups, applications, and professional digital workflows.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Video Editing · Backup · Creative Work</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="workstation">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/usb-c-hub.webp" alt="Professional USB-C hub for mobile workstations" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">WORKSTATION ESSENTIAL</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Workstation</span>
+              <h3>Professional USB-C Hub</h3>
+              <p>A versatile connection hub for monitors, storage, network access, memory cards, and professional mobile workstations.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Laptops · Tablets · Remote Work</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="workstation">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/professional-monitor.webp" alt="Professional productivity monitor for design and development" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">PRO WORKSPACE</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Workstation</span>
+              <h3>Professional Productivity Monitor</h3>
+              <p>A high-quality display designed for development, design, content creation, multitasking, and productive technical work.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Development · Design · Productivity</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="workstation">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/mechanical-keyboard.webp" alt="Mechanical productivity keyboard for professional work" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">WORKSTATION ESSENTIAL</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Workstation</span>
+              <h3>Mechanical Productivity Keyboard</h3>
+              <p>A responsive keyboard suitable for development, writing, technical administration, and long professional work sessions.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Coding · Writing · Daily Work</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="workstation">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/ergonomic-mouse.webp" alt="Ergonomic professional mouse for productivity and design" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">DAILY TOOL</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Workstation</span>
+              <h3>Ergonomic Professional Mouse</h3>
+              <p>Comfortable precision control for development, creative work, productivity, and long sessions at the workstation.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Design · Productivity · Office</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="creator">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/professional-webcam.webp" alt="Professional webcam for meetings and content production" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">REMOTE WORK</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Creator Gear</span>
+              <h3>Professional Webcam</h3>
+              <p>A clear and reliable video solution for remote meetings, online presentations, consulting, interviews, and content production.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Meetings · Streaming · Consulting</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="network">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/network-switch.webp" alt="Managed network switch for business networks and labs" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">TECH LAB</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Network & Infrastructure</span>
+              <h3>Managed Network Switch</h3>
+              <p>A structured networking solution for professional environments requiring reliable connectivity, VLAN support, and organized deployment.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Business Networks · VLAN · Labs</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="network">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/wifi-access-point.webp" alt="Business Wi-Fi access point for reliable wireless coverage" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">INFRASTRUCTURE</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Network & Infrastructure</span>
+              <h3>Business Wi-Fi Access Point</h3>
+              <p>Reliable wireless connectivity for offices, professional environments, laboratories, and modern business infrastructure.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Offices · Hotels · Business Wi-Fi</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="network">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/network-tool-kit.webp" alt="Professional network tool kit for cabling and support" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">TECHNICIAN TOOL</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Network & Infrastructure</span>
+              <h3>Professional Network Tool Kit</h3>
+              <p>A practical collection of tools for cable preparation, connectivity checks, installations, and technical troubleshooting.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Installations · Cabling · Support</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="lab">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/mini-pc.webp" alt="Compact mini PC for home lab and local services" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">LAB ESSENTIAL</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Cloud & Tech Lab</span>
+              <h3>Compact Mini PC</h3>
+              <p>A compact system for development laboratories, local services, virtualization, monitoring, and home server projects.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Home Lab · Linux · Local Services</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="lab">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/nas-storage.webp" alt="Network attached storage for backup and shared files" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">DATA & BACKUP</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Cloud & Tech Lab</span>
+              <h3>Network Attached Storage</h3>
+              <p>Centralized storage for backups, shared files, media, professional projects, and secure local data management.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Backup · Business Files · Media</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+
+          <article class="select-product-card" data-category="lab">
+            <figure class="select-product-visual">
+              <img src="assets/images/select/raspberry-pi-kit.webp" alt="Single-board computer kit for automation and learning labs" loading="lazy" decoding="async" onerror="this.hidden=true">
+              <span class="select-product-badge">LEARNING LAB</span>
+            </figure>
+            <div class="select-product-content">
+              <span class="select-product-category">Cloud & Tech Lab</span>
+              <h3>Single-Board Computer Kit</h3>
+              <p>A versatile compact computing kit for learning, automation, monitoring, networking, and experimental technical projects.</p>
+              <div class="select-product-use"><span>Recommended for</span><strong>Automation · Linux · Learning Lab</strong></div>
+              <div class="select-product-footer"><span class="select-product-retailer">Retailer to be added</span><button class="select-product-link" type="button" data-affiliate-url="" aria-disabled="true">View product</button></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="select-final-block">
+          <span class="select-micro-label">HOW WE SELECT</span>
+          <h3>Practical tools for real digital work</h3>
+          <p>Each recommendation is selected based on practical use, compatibility with professional workflows, and relevance to technology, infrastructure, content creation, and modern business environments.</p>
+          <div class="select-principles">
+            <div><h4>Practical value</h4><p>Tools selected for real professional and creative use.</p></div>
+            <div><h4>Workflow compatibility</h4><p>Equipment designed to integrate into modern digital workflows.</p></div>
+            <div><h4>Clear recommendations</h4><p>Useful context to help visitors understand who each product is suitable for.</p></div>
+          </div>
+          <p class="select-final-notice">Product availability, specifications, and conditions are managed by the external retailer and may change without notice.</p>
+          <button class="select-suggest-action" type="button" data-contact-action="suggest-product">Suggest a product</button>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=7"></script>
+</body>
+</html>
