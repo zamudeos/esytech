@@ -2,10 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cinematic Scroll Experience</title>
-  <meta name="description" content="A smooth and interactive cinematic experience with scroll-based animation.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ESY TECH CREATIVE | Web, AI, Cloud & Digital Solutions</title>
+  <meta name="description" content="ESY TECH CREATIVE builds intelligent websites, custom applications, AI automation, cloud infrastructure, technical solutions, and premium digital content for modern businesses.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#050508">
+  <meta name="author" content="ESY TECH CREATIVE">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://YOUR-FINAL-DOMAIN.com/">
+  <link rel="icon" type="image/png" href="assets/favicons/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicons/favicon.png">
+  <!-- TODO: Add social preview image at assets/images/og/esy-tech-creative-cover.webp, recommended size 1200x630. -->
+  <!-- TODO: Add brand logo at assets/images/brand/esy-tech-creative-logo.png when available. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ESY TECH CREATIVE">
+  <meta property="og:title" content="ESY TECH CREATIVE | Web, AI, Cloud & Digital Solutions">
+  <meta property="og:description" content="Intelligent websites, custom applications, AI automation, cloud infrastructure, technical solutions, and premium digital content for modern businesses.">
+  <meta property="og:url" content="https://YOUR-FINAL-DOMAIN.com/">
+  <meta property="og:image" content="https://YOUR-FINAL-DOMAIN.com/assets/images/og/esy-tech-creative-cover.webp">
+  <meta property="og:image:alt" content="ESY TECH CREATIVE — Technology, intelligence, infrastructure, and digital creation">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ESY TECH CREATIVE | Web, AI, Cloud & Digital Solutions">
+  <meta name="twitter:description" content="Intelligent websites, custom applications, AI automation, cloud infrastructure, technical solutions, and premium digital content for modern businesses.">
+  <meta name="twitter:image" content="https://YOUR-FINAL-DOMAIN.com/assets/images/og/esy-tech-creative-cover.webp">
+  <meta name="twitter:image:alt" content="ESY TECH CREATIVE — Technology, intelligence, infrastructure, and digital creation">
   <link rel="stylesheet" href="style.css?v=7">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://YOUR-FINAL-DOMAIN.com/#website",
+      "url": "https://YOUR-FINAL-DOMAIN.com/",
+      "name": "ESY TECH CREATIVE",
+      "description": "ESY TECH CREATIVE builds intelligent websites, custom applications, AI automation, cloud infrastructure, technical solutions, and premium digital content for modern businesses.",
+      "publisher": {
+        "@id": "https://YOUR-FINAL-DOMAIN.com/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://YOUR-FINAL-DOMAIN.com/#organization",
+      "name": "ESY TECH CREATIVE",
+      "url": "https://YOUR-FINAL-DOMAIN.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://YOUR-FINAL-DOMAIN.com/assets/images/brand/esy-tech-creative-logo.png"
+      },
+      "description": "Technology and creative studio providing web development, custom applications, artificial intelligence, automation, cloud infrastructure, network solutions, digital marketing, video production, and mobile photography.",
+      "sameAs": []
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://YOUR-FINAL-DOMAIN.com/#professional-service",
+      "name": "ESY TECH CREATIVE",
+      "url": "https://YOUR-FINAL-DOMAIN.com/",
+      "description": "Digital technology, infrastructure, artificial intelligence, creative production, and business solutions.",
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "France"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Worldwide remote services"
+        }
+      ],
+      "serviceType": [
+        "Web Development",
+        "Custom Web Applications",
+        "Artificial Intelligence and Automation",
+        "Cloud Infrastructure",
+        "Network and Technical Solutions",
+        "Paid Traffic Management",
+        "Video Production",
+        "Mobile Photography",
+        "Creative Digital Experiences"
+      ],
+      "provider": {
+        "@id": "https://YOUR-FINAL-DOMAIN.com/#organization"
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -18,7 +101,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="menu-hamburger" id="menu-hamburger-btn" aria-label="Open menu">
+    <button class="menu-hamburger" id="menu-hamburger-btn" aria-label="Open menu" aria-controls="mobile-menu-drawer" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="4" y1="6" x2="20" y2="6" />
         <line x1="4" y1="12" x2="20" y2="12" />
@@ -26,6 +109,8 @@
       </svg>
     </button>
   </header>
+
+  <main id="main-content">
 
   <!-- Hero Section -->
   <section class="hero-section" id="hero-section">
@@ -323,21 +408,59 @@
   </div>
 
   <!-- Mobile Glassmorphic Drawer Menu -->
-  <div class="mobile-menu-drawer" id="mobile-menu-drawer">
-    <div class="drawer-close" id="drawer-close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
+  <div class="mobile-menu-drawer" id="mobile-menu-drawer" aria-hidden="true">
+    <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <div class="mobile-menu-header">
+        <div>
+          <span class="mobile-menu-brand">ESY TECH CREATIVE</span>
+          <span class="mobile-menu-eyebrow">Explore the experience</span>
+        </div>
+        <button class="drawer-close" id="drawer-close" aria-label="Close menu" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <nav class="drawer-nav" aria-label="Mobile menu">
+        <a href="#about" class="drawer-link">
+          <span class="drawer-link-index">01</span>
+          <span class="drawer-dot"></span>
+          <span class="drawer-link-copy"><span class="drawer-link-title">About</span><span class="drawer-link-description">Who we are</span></span>
+          <span class="drawer-link-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="#projects" class="drawer-link">
+          <span class="drawer-link-index">02</span>
+          <span class="drawer-dot"></span>
+          <span class="drawer-link-copy"><span class="drawer-link-title">Projects</span><span class="drawer-link-description">Selected work</span></span>
+          <span class="drawer-link-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="#services" class="drawer-link">
+          <span class="drawer-link-index">03</span>
+          <span class="drawer-dot"></span>
+          <span class="drawer-link-copy"><span class="drawer-link-title">Services</span><span class="drawer-link-description">What we create</span></span>
+          <span class="drawer-link-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="#select" class="drawer-link">
+          <span class="drawer-link-index">04</span>
+          <span class="drawer-dot"></span>
+          <span class="drawer-link-copy"><span class="drawer-link-title">Select</span><span class="drawer-link-description">Curated tools</span></span>
+          <span class="drawer-link-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="#contact" class="drawer-link">
+          <span class="drawer-link-index">05</span>
+          <span class="drawer-dot"></span>
+          <span class="drawer-link-copy"><span class="drawer-link-title">Contact</span><span class="drawer-link-description">Start a project</span></span>
+          <span class="drawer-link-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="#blog" class="drawer-link">
+          <span class="drawer-link-index">06</span>
+          <span class="drawer-dot"></span>
+          <span class="drawer-link-copy"><span class="drawer-link-title">Blog</span><span class="drawer-link-description">Insights</span></span>
+          <span class="drawer-link-arrow" aria-hidden="true">↗</span>
+        </a>
+      </nav>
     </div>
-    <nav class="drawer-nav">
-      <a href="#about" class="drawer-link"><span class="drawer-dot"></span>About</a>
-      <a href="#projects" class="drawer-link"><span class="drawer-dot"></span>Projects</a>
-      <a href="#services" class="drawer-link"><span class="drawer-dot"></span>Services</a>
-      <a href="#select" class="drawer-link"><span class="drawer-dot"></span>Select</a>
-      <a href="#contact" class="drawer-link"><span class="drawer-dot"></span>Contact</a>
-      <a href="#blog" class="drawer-link"><span class="drawer-dot"></span>Blog</a>
-    </nav>
   </div>
 
   <!-- About Editorial Glass Panel Overlay -->
@@ -994,6 +1117,8 @@
       </div>
     </div>
   </div>
+
+  </main>
 
   <script src="app.js?v=7"></script>
 </body>
