@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "name": "Cybersecurity",
+      "count": 1
+    },
+    {
+      "name": "Scam Alerts",
+      "count": 1
+    },
+    {
+      "name": "Artificial Intelligence",
+      "count": 1
+    },
+    {
+      "name": "Wi-Fi & Networks",
+      "count": 1
+    },
+    {
+      "name": "Cloud & Infrastructure",
+      "count": 0
+    },
+    {
+      "name": "Web & Business",
+      "count": 0
+    },
+    {
+      "name": "Creative Technology",
+      "count": 0
+    }
+  ]
+}

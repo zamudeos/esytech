@@ -27,7 +27,7 @@
   <meta name="twitter:description" content="Intelligent websites, custom applications, AI automation, cloud infrastructure, technical solutions, and premium digital content for modern businesses.">
   <meta name="twitter:image" content="https://YOUR-FINAL-DOMAIN.com/assets/images/og/esy-tech-creative-cover.webp">
   <meta name="twitter:image:alt" content="ESY TECH CREATIVE — Technology, intelligence, infrastructure, and digital creation">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=10">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -98,6 +98,7 @@
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#portfolio">Portifolio</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -152,6 +153,16 @@
           </div>
         </div>
       </a>
+      <a href="#portfolio" class="bubble-menu-item b-portfolio" id="portfolio-bubble-trigger" role="button" aria-haspopup="dialog" aria-controls="portfolio-panel-overlay" aria-expanded="false" data-x="64" data-y="42">
+        <div class="bubble-wrapper">
+          <div class="bubble-bg"></div>
+          <div class="bubble-content">
+            <span class="bubble-dot"></span>
+            <span class="bubble-text">Portifolio</span>
+            <div class="bubble-shine"></div>
+          </div>
+        </div>
+      </a>
       <a href="#services" class="bubble-menu-item b-services" id="services-bubble-trigger" role="button" aria-haspopup="dialog" aria-controls="services-panel-overlay" aria-expanded="false" data-x="10" data-y="70">
         <div class="bubble-wrapper">
           <div class="bubble-bg"></div>
@@ -172,7 +183,7 @@
           </div>
         </div>
       </a>
-      <a href="#blog" class="bubble-menu-item b-blog" data-x="78" data-y="25">
+      <a href="#blog" class="bubble-menu-item b-blog" id="blog-bubble-trigger" role="button" aria-haspopup="dialog" aria-controls="blog-panel-overlay" aria-expanded="false" data-x="78" data-y="25">
         <div class="bubble-wrapper">
           <div class="bubble-bg"></div>
           <div class="bubble-content">
@@ -435,26 +446,32 @@
           <span class="drawer-link-copy"><span class="drawer-link-title">Projects</span><span class="drawer-link-description">Selected work</span></span>
           <span class="drawer-link-arrow" aria-hidden="true">↗</span>
         </a>
-        <a href="#services" class="drawer-link">
+        <a href="#portfolio" class="drawer-link">
           <span class="drawer-link-index">03</span>
+          <span class="drawer-dot"></span>
+          <span class="drawer-link-copy"><span class="drawer-link-title">Portifolio</span><span class="drawer-link-description">Live project mockups</span></span>
+          <span class="drawer-link-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a href="#services" class="drawer-link">
+          <span class="drawer-link-index">04</span>
           <span class="drawer-dot"></span>
           <span class="drawer-link-copy"><span class="drawer-link-title">Services</span><span class="drawer-link-description">What we create</span></span>
           <span class="drawer-link-arrow" aria-hidden="true">↗</span>
         </a>
         <a href="#select" class="drawer-link">
-          <span class="drawer-link-index">04</span>
+          <span class="drawer-link-index">05</span>
           <span class="drawer-dot"></span>
           <span class="drawer-link-copy"><span class="drawer-link-title">Select</span><span class="drawer-link-description">Curated tools</span></span>
           <span class="drawer-link-arrow" aria-hidden="true">↗</span>
         </a>
         <a href="#contact" class="drawer-link" id="contact-drawer-trigger">
-          <span class="drawer-link-index">05</span>
+          <span class="drawer-link-index">06</span>
           <span class="drawer-dot"></span>
           <span class="drawer-link-copy"><span class="drawer-link-title">Contact</span><span class="drawer-link-description">Start a project</span></span>
           <span class="drawer-link-arrow" aria-hidden="true">↗</span>
         </a>
         <a href="#blog" class="drawer-link">
-          <span class="drawer-link-index">06</span>
+          <span class="drawer-link-index">07</span>
           <span class="drawer-dot"></span>
           <span class="drawer-link-copy"><span class="drawer-link-title">Blog</span><span class="drawer-link-description">Insights</span></span>
           <span class="drawer-link-arrow" aria-hidden="true">↗</span>
@@ -819,7 +836,7 @@
 
   <!-- ESY TECH Select Affiliate Recommendations Panel -->
   <div class="select-panel-overlay" id="select-panel-overlay" role="dialog" aria-modal="true" aria-labelledby="select-panel-title" aria-hidden="true">
-    <div class="select-panel" id="select-panel">
+    <div class="select-panel select-panel--content-hidden" id="select-panel">
       <button class="select-panel-close" id="select-panel-close" aria-label="Close Select Panel">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -827,7 +844,7 @@
         </svg>
       </button>
 
-      <div class="select-panel-content">
+      <div class="select-panel-content" aria-hidden="true">
         <header class="select-panel-header">
           <span class="select-micro-label">CURATED TOOLS & EQUIPMENT</span>
           <h2 class="select-panel-title" id="select-panel-title">ESY TECH Select</h2>
@@ -1118,6 +1135,141 @@
     </div>
   </div>
 
+  <!-- Portfolio Project Mockups Panel Overlay -->
+  <div class="portfolio-panel-overlay" id="portfolio-panel-overlay" role="dialog" aria-modal="true" aria-labelledby="portfolio-panel-title" aria-hidden="true">
+    <div class="portfolio-panel" id="portfolio-panel">
+      <button class="portfolio-panel-close" id="portfolio-panel-close" aria-label="Close Portifolio Panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="portfolio-panel-content">
+        <header class="portfolio-panel-header">
+          <span class="portfolio-micro-label">SELECTED PROJECTS</span>
+          <h2 class="portfolio-panel-title" id="portfolio-panel-title">Portifolio</h2>
+          <p class="portfolio-panel-intro">A curated view of live projects presented as interactive mockups. Open a preview for detail or visit the full project in a new tab.</p>
+        </header>
+
+        <div class="portfolio-grid" aria-label="Live project mockups">
+          <article class="portfolio-card">
+            <div class="portfolio-mockup">
+              <span class="portfolio-browser-bar" aria-hidden="true"><span></span><span></span><span></span></span>
+              <iframe src="https://fpxtributariaoficial-seven.vercel.app" title="FPX Tributaria Oficial preview" loading="lazy" referrerpolicy="no-referrer"></iframe>
+              <button class="portfolio-mockup-button" type="button" data-preview-url="https://fpxtributariaoficial-seven.vercel.app" data-project-url="https://fpxtributariaoficial-seven.vercel.app" data-project-title="FPX Tributaria Oficial">
+                <span class="portfolio-zoom-label">Click to inspect</span>
+              </button>
+            </div>
+            <div class="portfolio-card-copy">
+              <span class="portfolio-card-category">Tax advisory website</span>
+              <h3>FPX Tributaria Oficial</h3>
+              <p>Corporate digital presence focused on tax positioning, credibility, and conversion.</p>
+              <a class="portfolio-card-link" href="https://fpxtributariaoficial-seven.vercel.app" target="_blank" rel="noopener noreferrer">View live project</a>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-mockup">
+              <span class="portfolio-browser-bar" aria-hidden="true"><span></span><span></span><span></span></span>
+              <iframe src="https://coopernorte.vercel.app/cuidar+_home_page/code.html" title="CooperNorte Cuidar preview" loading="lazy" referrerpolicy="no-referrer"></iframe>
+              <button class="portfolio-mockup-button" type="button" data-preview-url="https://coopernorte.vercel.app/cuidar+_home_page/code.html" data-project-url="https://coopernorte.vercel.app/cuidar+_home_page/code.html" data-project-title="CooperNorte Cuidar">
+                <span class="portfolio-zoom-label">Click to inspect</span>
+              </button>
+            </div>
+            <div class="portfolio-card-copy">
+              <span class="portfolio-card-category">Cooperative care platform</span>
+              <h3>CooperNorte Cuidar</h3>
+              <p>Service-oriented presentation designed for clear navigation and institutional communication.</p>
+              <a class="portfolio-card-link" href="https://coopernorte.vercel.app/cuidar+_home_page/code.html" target="_blank" rel="noopener noreferrer">View live project</a>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-mockup">
+              <span class="portfolio-browser-bar" aria-hidden="true"><span></span><span></span><span></span></span>
+              <iframe src="https://manitop-a1mg.vercel.app" title="Manitop preview" loading="lazy" referrerpolicy="no-referrer"></iframe>
+              <button class="portfolio-mockup-button" type="button" data-preview-url="https://manitop-a1mg.vercel.app" data-project-url="https://manitop-a1mg.vercel.app" data-project-title="Manitop">
+                <span class="portfolio-zoom-label">Click to inspect</span>
+              </button>
+            </div>
+            <div class="portfolio-card-copy">
+              <span class="portfolio-card-category">Brand website</span>
+              <h3>Manitop</h3>
+              <p>Modern product and brand interface with a direct path from first impression to exploration.</p>
+              <a class="portfolio-card-link" href="https://manitop-a1mg.vercel.app" target="_blank" rel="noopener noreferrer">View live project</a>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-mockup">
+              <span class="portfolio-browser-bar" aria-hidden="true"><span></span><span></span><span></span></span>
+              <iframe src="https://archdioli-engenharia-hub-16.vercel.app/" title="Archdioli Engenharia preview" loading="lazy" referrerpolicy="no-referrer"></iframe>
+              <button class="portfolio-mockup-button" type="button" data-preview-url="https://archdioli-engenharia-hub-16.vercel.app/" data-project-url="https://archdioli-engenharia-hub-16.vercel.app/" data-project-title="Archdioli Engenharia">
+                <span class="portfolio-zoom-label">Click to inspect</span>
+              </button>
+            </div>
+            <div class="portfolio-card-copy">
+              <span class="portfolio-card-category">Engineering hub</span>
+              <h3>Archdioli Engenharia</h3>
+              <p>Professional engineering presentation structured for authority, services, and project discovery.</p>
+              <a class="portfolio-card-link" href="https://archdioli-engenharia-hub-16.vercel.app/" target="_blank" rel="noopener noreferrer">View live project</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="portfolio-preview-overlay" id="portfolio-preview-overlay" aria-hidden="true">
+    <div class="portfolio-preview-shell" role="dialog" aria-modal="true" aria-labelledby="portfolio-preview-title">
+      <div class="portfolio-preview-topbar">
+        <h3 id="portfolio-preview-title">Project preview</h3>
+        <div class="portfolio-preview-actions">
+          <a id="portfolio-preview-open-link" href="#" target="_blank" rel="noopener noreferrer">Open project</a>
+          <button id="portfolio-preview-close" type="button" aria-label="Close project preview">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <iframe id="portfolio-preview-frame" title="Expanded project preview" referrerpolicy="no-referrer"></iframe>
+    </div>
+  </div>
+
+  <!-- Blog Editorial Radar Panel Overlay -->
+  <div class="blog-panel-overlay" id="blog-panel-overlay" role="dialog" aria-modal="true" aria-labelledby="blog-panel-title" aria-hidden="true">
+    <div class="blog-panel" id="blog-panel">
+      <button class="blog-panel-close" id="blog-panel-close" aria-label="Close Blog Panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="blog-panel-content">
+        <header class="blog-panel-header">
+          <span class="blog-micro-label">INSIGHTS & SECURITY RADAR</span>
+          <h2 class="blog-panel-title" id="blog-panel-title">Ideas, guidance, and alerts for the digital world</h2>
+          <p class="blog-panel-intro">Practical content about cybersecurity, artificial intelligence, online protection, digital infrastructure, and modern business technology.</p>
+          <a class="blog-archive-link" href="/blog/">Open complete Blog archive</a>
+        </header>
+        <section class="blog-panel-controls" aria-label="Blog search and filters">
+          <label for="blog-panel-search">Search articles</label>
+          <div class="blog-panel-search-row">
+            <input id="blog-panel-search" type="search" placeholder="Search by title, category, or tag" autocomplete="off">
+            <button id="blog-panel-clear" type="button">Clear</button>
+          </div>
+          <div class="blog-panel-filter-row" id="blog-panel-filters" role="list"></div>
+        </section>
+        <section class="blog-featured" id="blog-featured" aria-label="Featured article"></section>
+        <section class="blog-card-grid" id="blog-card-grid" aria-label="Latest articles"></section>
+        <p class="blog-empty-state" id="blog-empty-state" hidden>No articles match your search.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Contact Editorial Glass Panel Overlay -->
   <div class="contact-panel-overlay" id="contact-panel-overlay" role="dialog" aria-modal="true" aria-labelledby="contact-panel-title" aria-hidden="true">
     <div class="contact-panel" id="contact-panel">
@@ -1249,6 +1401,6 @@
 
   </main>
 
-  <script src="app.js?v=7"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>

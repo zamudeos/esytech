@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://YOUR-FINAL-DOMAIN.com/</loc>
-  </url>
+  <url><loc>https://www.esytechcreative.com/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://www.esytechcreative.com/blog/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://www.esytechcreative.com/blog/ai-automation-small-business/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://www.esytechcreative.com/blog/protect-business-wifi/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://www.esytechcreative.com/blog/public-wifi-security/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://www.esytechcreative.com/blog/recognize-phishing-attempts/</loc><lastmod>2026-08-02</lastmod></url>
 </urlset>

@@ -1,0 +1,16 @@
+{
+  "name": "esytechcreative-static-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "blog:validate": "node scripts/validate-blog.mjs",
+    "blog:generate": "node scripts/generate-blog.mjs",
+    "blog:cover": "node scripts/generate-cover.mjs",
+    "blog:preview": "python -m http.server 3000",
+    "blog:radar": "node scripts/content-radar.mjs",
+    "blog:radar:dry-run": "node scripts/content-radar.mjs --dry-run",
+    "test": "node scripts/test-blog.mjs",
+    "build": "npm run blog:generate && npm test"
+  }
+}

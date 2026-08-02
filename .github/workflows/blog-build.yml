@@ -1,0 +1,36 @@
+name: Blog build
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'content/blog/**'
+      - 'scripts/**'
+      - 'data/blog-*.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/blog-build.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'content/blog/**'
+      - 'scripts/**'
+      - 'data/blog-*.json'
+      - 'package.json'
+      - 'package-lock.json'
+
+jobs:
+  blog-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run blog:generate
+      - run: npm run blog:validate
+      - run: npm test
+      - name: Check generated file drift
+        run: git diff --exit-code

@@ -1,0 +1,50 @@
+name: Content Radar
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run without creating a branch or PR'
+        required: true
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
+      category:
+        description: 'Topic category'
+        required: true
+        default: 'Cybersecurity'
+        type: choice
+        options:
+          - Cybersecurity
+          - Scam Alerts
+          - Artificial Intelligence
+          - Wi-Fi & Networks
+          - Cloud & Infrastructure
+          - Web & Business
+          - Creative Technology
+  schedule:
+    # Mondays at 08:00 UTC, 10:00 Paris during summer time and 09:00 Paris during standard time.
+    - cron: '0 8 * * 1'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  content-radar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Run Content Radar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BLOG_IMAGE_PROVIDER: svg
+          CONTENT_RADAR_DRY_RUN: ${{ github.event_name == 'schedule' && 'false' || inputs.dry_run }}
+          CONTENT_RADAR_CATEGORY: ${{ inputs.category || 'Cybersecurity' }}
+        run: npm run blog:radar

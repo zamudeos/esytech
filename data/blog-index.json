@@ -1,0 +1,96 @@
+{
+  "generatedAt": "2026-08-02T17:20:02.125Z",
+  "siteUrl": "https://www.esytechcreative.com",
+  "categories": [
+    "All",
+    "Cybersecurity",
+    "Scam Alerts",
+    "Artificial Intelligence",
+    "Wi-Fi & Networks",
+    "Cloud & Infrastructure",
+    "Web & Business",
+    "Creative Technology"
+  ],
+  "articles": [
+    {
+      "title": "Practical ways small businesses can use AI automation",
+      "slug": "ai-automation-small-business",
+      "description": "Realistic ways small businesses can use AI automation for admin work, leads, support, drafts, classification, and workflows while preserving privacy and human review.",
+      "category": "Artificial Intelligence",
+      "tags": [
+        "AI",
+        "Automation",
+        "Small Business"
+      ],
+      "publishedAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "author": "ESY TECH CREATIVE",
+      "featured": false,
+      "cover": "/assets/images/blog/generated/ai-automation-small-business.svg",
+      "coverAlt": "Dark editorial cover with neural network nodes for AI automation in small business",
+      "readingTime": "3 min read",
+      "url": "/blog/ai-automation-small-business/",
+      "canonicalUrl": "https://www.esytechcreative.com/blog/ai-automation-small-business/"
+    },
+    {
+      "title": "How to protect your business Wi-Fi network",
+      "slug": "protect-business-wifi",
+      "description": "A practical guide to safer business Wi-Fi, covering router administration, authentication, updates, guest networks, device inventory, and professional assessment.",
+      "category": "Wi-Fi & Networks",
+      "tags": [
+        "Wi-Fi",
+        "Security",
+        "Networks"
+      ],
+      "publishedAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "author": "ESY TECH CREATIVE",
+      "featured": true,
+      "cover": "/assets/images/blog/generated/protect-business-wifi.svg",
+      "coverAlt": "Dark editorial cover with a Wi-Fi shield visual for business network protection",
+      "readingTime": "4 min read",
+      "url": "/blog/protect-business-wifi/",
+      "canonicalUrl": "https://www.esytechcreative.com/blog/protect-business-wifi/"
+    },
+    {
+      "title": "Public Wi-Fi: practical steps to reduce your risk",
+      "slug": "public-wifi-security",
+      "description": "A practical public Wi-Fi safety guide covering correct networks, HTTPS, account access, device sharing, VPN limits, updates, and multi-factor authentication.",
+      "category": "Cybersecurity",
+      "tags": [
+        "Public Wi-Fi",
+        "Mobile Security",
+        "Cybersecurity"
+      ],
+      "publishedAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "author": "ESY TECH CREATIVE",
+      "featured": false,
+      "cover": "/assets/images/blog/generated/public-wifi-security.svg",
+      "coverAlt": "Dark editorial cover with a security shield for public Wi-Fi safety",
+      "readingTime": "3 min read",
+      "url": "/blog/public-wifi-security/",
+      "canonicalUrl": "https://www.esytechcreative.com/blog/public-wifi-security/"
+    },
+    {
+      "title": "How to recognize phishing and fake support messages",
+      "slug": "recognize-phishing-attempts",
+      "description": "Learn practical signs of phishing, fake support messages, suspicious links, impersonation, and safer verification habits.",
+      "category": "Scam Alerts",
+      "tags": [
+        "Phishing",
+        "Scams",
+        "Online Safety"
+      ],
+      "publishedAt": "2026-08-02",
+      "updatedAt": "2026-08-02",
+      "author": "ESY TECH CREATIVE",
+      "featured": false,
+      "cover": "/assets/images/blog/generated/recognize-phishing-attempts.svg",
+      "coverAlt": "Dark editorial cover with a warning symbol for phishing and fake support messages",
+      "readingTime": "3 min read",
+      "url": "/blog/recognize-phishing-attempts/",
+      "canonicalUrl": "https://www.esytechcreative.com/blog/recognize-phishing-attempts/"
+    }
+  ]
+}

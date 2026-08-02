@@ -1,0 +1,44 @@
+{
+  "sources": [
+    {
+      "name": "CISA Alerts",
+      "baseUrl": "https://www.cisa.gov/news-events/cybersecurity-advisories",
+      "category": "Cybersecurity",
+      "sourceType": "official-advisory",
+      "enabled": true,
+      "reliability": "official",
+      "language": "en",
+      "rssUrl": ""
+    },
+    {
+      "name": "FTC Consumer Advice",
+      "baseUrl": "https://consumer.ftc.gov/consumer-alerts",
+      "category": "Scam Alerts",
+      "sourceType": "government-consumer-alerts",
+      "enabled": true,
+      "reliability": "official",
+      "language": "en",
+      "rssUrl": ""
+    },
+    {
+      "name": "OpenAI News",
+      "baseUrl": "https://openai.com/news/",
+      "category": "Artificial Intelligence",
+      "sourceType": "official-product-news",
+      "enabled": false,
+      "reliability": "official",
+      "language": "en",
+      "rssUrl": ""
+    },
+    {
+      "name": "Cloud provider updates placeholder",
+      "baseUrl": "",
+      "category": "Cloud & Infrastructure",
+      "sourceType": "placeholder",
+      "enabled": false,
+      "reliability": "unconfigured",
+      "language": "en",
+      "rssUrl": ""
+    }
+  ]
+}

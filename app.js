@@ -159,10 +159,13 @@ function init() {
   setupMobileMenu();
   setupServicesPanel();
   setupSelectPanel();
+  setupPortfolioPanel();
+  setupBlogPanel();
   setupSmoothScroll();
   setupAboutPanel();
   setupContactPanel();
   connectAllCTAs();
+  handleInitialPanelRequest();
   storyController = new StoryController();
   
   // Smoothly fade out the loader overlay
@@ -504,10 +507,14 @@ function setupSmoothScroll() {
       if (
         targetId === 'about' || 
         targetId === 'services' || 
+        targetId === 'portfolio' ||
+        targetId === 'blog' ||
         targetId === 'contact' ||
         this.id === 'about-bubble-trigger' ||
         this.id === 'services-bubble-trigger' ||
         this.id === 'select-bubble-trigger' ||
+        this.id === 'portfolio-bubble-trigger' ||
+        this.id === 'blog-bubble-trigger' ||
         this.id === 'contact-bubble-trigger' ||
         this.classList.contains('drawer-link') ||
         this.classList.contains('btn') ||
@@ -1092,8 +1099,368 @@ class StoryController {
 }
 
 // ==========================================
+// Portfolio Panel Implementation
+// ==========================================
+
+function setupPortfolioPanel() {
+  const overlay = document.getElementById('portfolio-panel-overlay');
+  const panel = document.getElementById('portfolio-panel');
+  const closeBtn = document.getElementById('portfolio-panel-close');
+  const bubbleTrigger = document.getElementById('portfolio-bubble-trigger');
+  const drawerTrigger = document.querySelector('.drawer-link[href="#portfolio"]');
+  const mockupButtons = Array.from(document.querySelectorAll('.portfolio-mockup-button'));
+  const previewOverlay = document.getElementById('portfolio-preview-overlay');
+  const previewFrame = document.getElementById('portfolio-preview-frame');
+  const previewTitle = document.getElementById('portfolio-preview-title');
+  const previewOpenLink = document.getElementById('portfolio-preview-open-link');
+  const previewClose = document.getElementById('portfolio-preview-close');
+
+  if (!overlay || !panel || !closeBtn) return;
+
+  let activeTrigger = null;
+  let activePreviewTrigger = null;
+
+  function openPanel(triggerEl) {
+    activeTrigger = triggerEl;
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    if (bubbleTrigger) bubbleTrigger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('portfolio-open');
+
+    const focusableElements = panel.querySelectorAll('button, [href], iframe, [tabindex]:not([tabindex="-1"])');
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+
+    function handleKeydown(e) {
+      if (e.key !== 'Tab' || !firstFocusable || !lastFocusable) return;
+
+      if (e.shiftKey && document.activeElement === firstFocusable) {
+        lastFocusable.focus();
+        e.preventDefault();
+      } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+        firstFocusable.focus();
+        e.preventDefault();
+      }
+    }
+
+    panel._focusTrapHandler = handleKeydown;
+    panel.addEventListener('keydown', handleKeydown);
+
+    setTimeout(() => {
+      closeBtn.focus();
+    }, 100);
+  }
+
+  function closePanel() {
+    closePreview();
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    if (bubbleTrigger) bubbleTrigger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('portfolio-open');
+
+    if (panel._focusTrapHandler) {
+      panel.removeEventListener('keydown', panel._focusTrapHandler);
+      panel._focusTrapHandler = null;
+    }
+
+    if (activeTrigger) {
+      activeTrigger.focus();
+    }
+  }
+
+  function openPreview(button) {
+    if (!previewOverlay || !previewFrame || !previewClose || !previewTitle || !previewOpenLink) return;
+
+    const previewUrl = button.getAttribute('data-preview-url') || '';
+    const projectUrl = button.getAttribute('data-project-url') || previewUrl;
+    const projectTitle = button.getAttribute('data-project-title') || 'Project preview';
+
+    activePreviewTrigger = button;
+    previewFrame.src = previewUrl;
+    previewTitle.textContent = projectTitle;
+    previewOpenLink.href = projectUrl;
+    previewOverlay.classList.add('active');
+    previewOverlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('portfolio-preview-open');
+
+    setTimeout(() => {
+      previewClose.focus();
+    }, 100);
+  }
+
+  function closePreview() {
+    if (!previewOverlay || !previewFrame) return;
+    const wasActive = previewOverlay.classList.contains('active');
+
+    previewOverlay.classList.remove('active');
+    previewOverlay.setAttribute('aria-hidden', 'true');
+    previewFrame.src = '';
+    document.body.classList.remove('portfolio-preview-open');
+
+    if (wasActive && activePreviewTrigger) {
+      activePreviewTrigger.focus();
+    }
+  }
+
+  window.openPortfolioPanel = openPanel;
+  window.closePortfolioPanel = closePanel;
+
+  if (bubbleTrigger) {
+    bubbleTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openPanel(bubbleTrigger);
+    });
+  }
+
+  if (drawerTrigger) {
+    drawerTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openPanel(drawerTrigger);
+    });
+  }
+
+  closeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    closePanel();
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      closePanel();
+    }
+  });
+
+  mockupButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      openPreview(button);
+    });
+  });
+
+  if (previewClose) {
+    previewClose.addEventListener('click', (e) => {
+      e.preventDefault();
+      closePreview();
+    });
+  }
+
+  if (previewOverlay) {
+    previewOverlay.addEventListener('click', (e) => {
+      if (e.target === previewOverlay) {
+        closePreview();
+      }
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+
+    if (previewOverlay && previewOverlay.classList.contains('active')) {
+      closePreview();
+    } else if (overlay.classList.contains('active')) {
+      closePanel();
+    }
+  });
+}
+
+// ==========================================
 // Contact Panel Implementation
 // ==========================================
+
+function setupBlogPanel() {
+  const overlay = document.getElementById('blog-panel-overlay');
+  const panel = document.getElementById('blog-panel');
+  const closeBtn = document.getElementById('blog-panel-close');
+  const bubbleTrigger = document.getElementById('blog-bubble-trigger');
+  const drawerTrigger = document.querySelector('.drawer-link[href="#blog"]');
+  const featuredEl = document.getElementById('blog-featured');
+  const gridEl = document.getElementById('blog-card-grid');
+  const filtersEl = document.getElementById('blog-panel-filters');
+  const searchEl = document.getElementById('blog-panel-search');
+  const clearBtn = document.getElementById('blog-panel-clear');
+  const emptyEl = document.getElementById('blog-empty-state');
+
+  if (!overlay || !panel || !closeBtn) return;
+
+  let activeTrigger = null;
+  let blogData = null;
+  let activeCategory = 'All';
+
+  function openPanel(triggerEl) {
+    activeTrigger = triggerEl;
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    if (bubbleTrigger) bubbleTrigger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('blog-open');
+    loadBlogData();
+
+    const focusableElements = panel.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+
+    function handleKeydown(e) {
+      if (e.key !== 'Tab' || !firstFocusable || !lastFocusable) return;
+      if (e.shiftKey && document.activeElement === firstFocusable) {
+        lastFocusable.focus();
+        e.preventDefault();
+      } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+        firstFocusable.focus();
+        e.preventDefault();
+      }
+    }
+
+    panel._focusTrapHandler = handleKeydown;
+    panel.addEventListener('keydown', handleKeydown);
+    setTimeout(() => closeBtn.focus(), 100);
+  }
+
+  function closePanel() {
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    if (bubbleTrigger) bubbleTrigger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('blog-open');
+
+    if (panel._focusTrapHandler) {
+      panel.removeEventListener('keydown', panel._focusTrapHandler);
+      panel._focusTrapHandler = null;
+    }
+
+    if (activeTrigger) activeTrigger.focus();
+  }
+
+  async function loadBlogData() {
+    if (blogData) {
+      renderBlog();
+      return;
+    }
+
+    if (gridEl) gridEl.innerHTML = '<p class="blog-empty-state">Loading articles...</p>';
+    try {
+      const response = await fetch('data/blog-index.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error('Blog index not available');
+      blogData = await response.json();
+      renderBlog();
+    } catch (error) {
+      if (gridEl) gridEl.innerHTML = '<p class="blog-empty-state">Blog articles are temporarily unavailable.</p>';
+    }
+  }
+
+  function renderBlog() {
+    if (!blogData || !gridEl || !filtersEl) return;
+    const categories = blogData.categories || ['All'];
+    filtersEl.innerHTML = categories.map(category => `<button class="blog-panel-filter${category === activeCategory ? ' active' : ''}" type="button" data-category="${escapeAttr(category)}">${escapeHtml(category)}</button>`).join('');
+    filtersEl.querySelectorAll('.blog-panel-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeCategory = btn.dataset.category || 'All';
+        renderBlog();
+      });
+    });
+
+    const articles = blogData.articles || [];
+    const featured = articles.find(article => article.featured) || articles[0];
+    if (featuredEl) {
+      featuredEl.innerHTML = featured ? `<article class="blog-featured-card">
+        <img src="${featured.cover}" alt="${escapeAttr(featured.coverAlt)}" loading="lazy">
+        <div class="blog-featured-copy"><span class="blog-micro-label">FEATURED ARTICLE</span><h3>${escapeHtml(featured.title)}</h3><p>${escapeHtml(featured.description)}</p><a class="blog-card-link" href="${featured.url}">Read article</a></div>
+      </article>` : '';
+    }
+
+    applyBlogFilters();
+  }
+
+  function applyBlogFilters() {
+    if (!blogData || !gridEl) return;
+    const query = (searchEl && searchEl.value ? searchEl.value : '').trim().toLowerCase();
+    const articles = (blogData.articles || []).filter(article => {
+      const text = [article.title, article.description, article.category, ...(article.tags || [])].join(' ').toLowerCase();
+      const categoryOk = activeCategory === 'All' || article.category === activeCategory;
+      const searchOk = !query || text.includes(query);
+      return categoryOk && searchOk;
+    });
+
+    gridEl.innerHTML = articles.map(article => {
+      const updated = article.updatedAt !== article.publishedAt;
+      return `<article class="blog-card">
+        <a class="blog-card-media" href="${article.url}"><img src="${article.cover}" alt="${escapeAttr(article.coverAlt)}" loading="lazy"></a>
+        <div class="blog-card-copy">
+          <span class="blog-card-category">${escapeHtml(article.category)}</span>
+          <div class="blog-card-badges">${article.featured ? '<span>Featured</span>' : ''}${updated ? '<span>Updated</span>' : ''}</div>
+          <h3>${escapeHtml(article.title)}</h3>
+          <p>${escapeHtml(article.description)}</p>
+          <div class="blog-card-meta">${formatBlogDate(article.publishedAt)} · ${escapeHtml(article.readingTime)}</div>
+          <a class="blog-card-link" href="${article.url}">Read article</a>
+        </div>
+      </article>`;
+    }).join('');
+
+    if (emptyEl) emptyEl.hidden = articles.length !== 0;
+  }
+
+  window.openBlogPanel = openPanel;
+  window.closeBlogPanel = closePanel;
+
+  if (bubbleTrigger) {
+    bubbleTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openPanel(bubbleTrigger);
+    });
+  }
+
+  if (drawerTrigger) {
+    drawerTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openPanel(drawerTrigger);
+    });
+  }
+
+  if (searchEl) searchEl.addEventListener('input', applyBlogFilters);
+  if (clearBtn && searchEl) {
+    clearBtn.addEventListener('click', () => {
+      searchEl.value = '';
+      searchEl.focus();
+      applyBlogFilters();
+    });
+  }
+
+  closeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    closePanel();
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closePanel();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) closePanel();
+  });
+}
+
+function handleInitialPanelRequest() {
+  const panel = new URLSearchParams(window.location.search).get('panel');
+  if (!panel) return;
+  const trigger = document.body;
+  setTimeout(() => {
+    if (panel === 'contact' && window.openContactPanel) window.openContactPanel(trigger);
+    if (panel === 'services' && window.openServicesPanel) window.openServicesPanel(trigger);
+    if (panel === 'blog' && window.openBlogPanel) window.openBlogPanel(trigger);
+  }, 250);
+}
+
+function escapeHtml(value) {
+  return String(value || '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+}
+
+function escapeAttr(value) {
+  return escapeHtml(value).replace(/`/g, '&#96;');
+}
+
+function formatBlogDate(date) {
+  return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(`${date}T00:00:00Z`));
+}
 
 function setupContactPanel() {
   const overlay = document.getElementById('contact-panel-overlay');
