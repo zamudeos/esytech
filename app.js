@@ -1,4 +1,5 @@
 // Configuration
+const CONTACT_WHATSAPP_NUMBER = '33749795786';
 const frameCount = 240;
 const imageFolder = 'ezgif-27c1ccb2fc865bfa-jpg';
 const frameNamePrefix = 'ezgif-frame-';
@@ -160,6 +161,8 @@ function init() {
   setupSelectPanel();
   setupSmoothScroll();
   setupAboutPanel();
+  setupContactPanel();
+  connectAllCTAs();
   storyController = new StoryController();
   
   // Smoothly fade out the loader overlay
@@ -497,6 +500,22 @@ function setupSmoothScroll() {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href').substring(1);
       
+      // Skip panel trigger links to avoid click conflicts with modal popups
+      if (
+        targetId === 'about' || 
+        targetId === 'services' || 
+        targetId === 'contact' ||
+        this.id === 'about-bubble-trigger' ||
+        this.id === 'services-bubble-trigger' ||
+        this.id === 'select-bubble-trigger' ||
+        this.id === 'contact-bubble-trigger' ||
+        this.classList.contains('drawer-link') ||
+        this.classList.contains('btn') ||
+        this.classList.contains('story-cta-btn')
+      ) {
+        return;
+      }
+      
       const sectionScrollPositions = {
         'hero-section': 0,
         'about': 0.22,
@@ -636,17 +655,14 @@ function setupAboutPanel() {
     ctaServices.addEventListener('click', (e) => {
       e.preventDefault();
       closePanel();
-      
-      // Smooth scroll to services percentage (0.68)
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const targetScrollTop = 0.68 * maxScroll;
-      
-      window.scrollTo({
-        top: targetScrollTop,
-        behavior: 'smooth'
-      });
+      if (window.openServicesPanel) {
+        window.openServicesPanel(ctaServices);
+      }
     });
   }
+
+  // Expose close function globally
+  window.closeAboutPanel = closePanel;
 }
 
 // Services editorial panel interaction setup
@@ -729,6 +745,10 @@ function setupServicesPanel() {
       activeTrigger.focus();
     }
   }
+
+  // Expose panel control functions globally
+  window.openServicesPanel = openPanel;
+  window.closeServicesPanel = closePanel;
 
   if (bubbleTrigger) {
     bubbleTrigger.addEventListener('click', (e) => {
@@ -846,6 +866,9 @@ function setupSelectPanel() {
       activeTrigger.focus();
     }
   }
+
+  // Expose close function globally
+  window.closeSelectPanel = closePanel;
 
   if (bubbleTrigger) {
     bubbleTrigger.addEventListener('click', (e) => {
@@ -1066,4 +1089,281 @@ class StoryController {
       }
     });
   }
+}
+
+// ==========================================
+// Contact Panel Implementation
+// ==========================================
+
+function setupContactPanel() {
+  const overlay = document.getElementById('contact-panel-overlay');
+  const panel = document.getElementById('contact-panel');
+  const closeBtn = document.getElementById('contact-panel-close');
+  const bubbleTrigger = document.getElementById('contact-bubble-trigger');
+  const drawerTrigger = document.querySelector('.drawer-link[href="#contact"]');
+  const form = document.getElementById('contact-project-form');
+
+  if (!overlay || !panel || !closeBtn) return;
+
+  let activeTrigger = null;
+
+  function openPanel(triggerEl) {
+    activeTrigger = triggerEl;
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    if (bubbleTrigger) bubbleTrigger.setAttribute('aria-expanded', 'true');
+    
+    document.body.classList.add('contact-open');
+    
+    // Trap focus inside modal
+    const focusableElements = panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+
+    function handleKeydown(e) {
+      if (e.key === 'Tab') {
+        if (e.shiftKey) { // Shift + Tab
+          if (document.activeElement === firstFocusable) {
+            lastFocusable.focus();
+            e.preventDefault();
+          }
+        } else { // Tab
+          if (document.activeElement === lastFocusable) {
+            firstFocusable.focus();
+            e.preventDefault();
+          }
+        }
+      }
+    }
+
+    panel._focusTrapHandler = handleKeydown;
+    panel.addEventListener('keydown', handleKeydown);
+
+    // Focus close button initially
+    setTimeout(() => {
+      closeBtn.focus();
+    }, 100);
+  }
+
+  function closePanel() {
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    if (bubbleTrigger) bubbleTrigger.setAttribute('aria-expanded', 'false');
+    
+    document.body.classList.remove('contact-open');
+
+    if (panel._focusTrapHandler) {
+      panel.removeEventListener('keydown', panel._focusTrapHandler);
+      panel._focusTrapHandler = null;
+    }
+
+    if (activeTrigger) {
+      activeTrigger.focus();
+    }
+  }
+
+  // Expose panel control functions globally
+  window.openContactPanel = openPanel;
+  window.closeContactPanel = closePanel;
+
+  // Event listener for Contact bubble click
+  if (bubbleTrigger) {
+    bubbleTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openPanel(bubbleTrigger);
+    });
+  }
+
+  // Event listener for Mobile Drawer link click
+  if (drawerTrigger) {
+    drawerTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openPanel(drawerTrigger);
+    });
+  }
+
+  // Close X button click
+  closeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    closePanel();
+  });
+
+  // Close when clicking outside on overlay
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      closePanel();
+    }
+  });
+
+  // Close on Escape key press
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      closePanel();
+    }
+  });
+
+  // Form validation and submission
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const nameField = document.getElementById('contact-name');
+      const emailField = document.getElementById('contact-email');
+      const companyField = document.getElementById('contact-company');
+      const projectTypeField = document.getElementById('contact-project-type');
+      const budgetField = document.getElementById('contact-budget');
+      const messageField = document.getElementById('contact-message');
+
+      let hasError = false;
+
+      // Reset inline errors
+      const groups = form.querySelectorAll('.form-group');
+      groups.forEach(g => {
+        g.classList.remove('has-error');
+        const errMsg = g.querySelector('.error-message');
+        if (errMsg) errMsg.textContent = '';
+      });
+
+      // Helper to set error
+      function setError(field, message) {
+        const group = field.closest('.form-group');
+        if (group) {
+          group.classList.add('has-error');
+          const errMsg = group.querySelector('.error-message');
+          if (errMsg) errMsg.textContent = message;
+          field.setAttribute('aria-invalid', 'true');
+        }
+        hasError = true;
+      }
+
+      // Validate Name
+      if (!nameField.value.trim()) {
+        setError(nameField, 'Please enter your name.');
+      } else {
+        nameField.setAttribute('aria-invalid', 'false');
+      }
+
+      // Validate Email
+      const emailVal = emailField.value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailVal) {
+        setError(emailField, 'Please enter a valid email address.');
+      } else if (!emailPattern.test(emailVal)) {
+        setError(emailField, 'Please enter a valid email address.');
+      } else {
+        emailField.setAttribute('aria-invalid', 'false');
+      }
+
+      // Validate Project Type
+      if (!projectTypeField.value) {
+        setError(projectTypeField, 'Please select a project type.');
+      } else {
+        projectTypeField.setAttribute('aria-invalid', 'false');
+      }
+
+      // Validate Message
+      if (!messageField.value.trim()) {
+        setError(messageField, 'Please tell us briefly about your project.');
+      } else {
+        messageField.setAttribute('aria-invalid', 'false');
+      }
+
+      if (hasError) {
+        // Focus first field with error
+        const firstErrGroup = form.querySelector('.form-group.has-error');
+        if (firstErrGroup) {
+          const firstErrField = firstErrGroup.querySelector('input, select, textarea');
+          if (firstErrField) firstErrField.focus();
+        }
+        return;
+      }
+
+      // Build and encode WhatsApp message
+      const name = nameField.value.trim();
+      const email = emailField.value.trim();
+      const company = companyField.value.trim();
+      const projectType = projectTypeField.value;
+      const budget = budgetField.value;
+      const message = messageField.value.trim();
+
+      let wpText = `Hello ESY TECH CREATIVE,\n\nI would like to discuss a new project.\n\nName: ${name}\nEmail: ${email}`;
+      
+      if (company) {
+        wpText += `\nCompany: ${company}`;
+      }
+      
+      wpText += `\nProject type: ${projectType}`;
+      
+      if (budget) {
+        wpText += `\nEstimated budget: ${budget}`;
+      }
+      
+      wpText += `\n\nProject details:\n${message}`;
+
+      const encodedMsg = encodeURIComponent(wpText);
+      const wpUrl = `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodedMsg}`;
+
+      // Open WhatsApp in new tab
+      window.open(wpUrl, '_blank', 'noopener,noreferrer');
+    });
+  }
+}
+
+// ==========================================
+// Connect all CTAs to Panels
+// ==========================================
+
+function connectAllCTAs() {
+  // 1. Connect all "Start a project" CTA triggers
+  const startProjectCTAs = [
+    document.querySelector('.hero-cta a[href="#projects"]'), // Hero CTA
+    document.querySelector('.story-cta-buttons a[href="#contact"]'), // Final scroll CTA
+    document.querySelector('button[data-contact-action="start-project"]'), // Services final CTA
+    document.querySelector('button[data-contact-action="talk"]'), // Services Talk CTA
+    document.querySelector('button[data-contact-action="suggest-product"]') // Select Suggest CTA
+  ];
+
+  startProjectCTAs.forEach(btn => {
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Close other panels if open
+        if (window.closeAboutPanel) window.closeAboutPanel();
+        if (window.closeServicesPanel) window.closeServicesPanel();
+        if (window.closeSelectPanel) window.closeSelectPanel();
+        
+        if (window.openContactPanel) {
+          window.openContactPanel(btn);
+        }
+      });
+    }
+  });
+
+  // 2. Connect all "Explore our services" CTA triggers
+  const exploreServicesCTAs = [
+    document.querySelector('.hero-cta a[href="#services"]'), // Hero primary CTA
+    document.querySelector('.story-cta-buttons a[href="#services"]') // Final scroll Services CTA
+  ];
+
+  exploreServicesCTAs.forEach(btn => {
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Close other panels if open
+        if (window.closeAboutPanel) window.closeAboutPanel();
+        if (window.closeContactPanel) window.closeContactPanel();
+        if (window.closeSelectPanel) window.closeSelectPanel();
+        
+        if (window.openServicesPanel) {
+          window.openServicesPanel(btn);
+        }
+      });
+    }
+  });
 }

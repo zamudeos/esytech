@@ -162,7 +162,7 @@
           </div>
         </div>
       </a>
-      <a href="#contact" class="bubble-menu-item b-contact" data-x="38" data-y="75">
+      <a href="#contact" class="bubble-menu-item b-contact" id="contact-bubble-trigger" role="button" aria-haspopup="dialog" aria-controls="contact-panel-overlay" aria-expanded="false" data-x="38" data-y="75">
         <div class="bubble-wrapper">
           <div class="bubble-bg"></div>
           <div class="bubble-content">
@@ -447,7 +447,7 @@
           <span class="drawer-link-copy"><span class="drawer-link-title">Select</span><span class="drawer-link-description">Curated tools</span></span>
           <span class="drawer-link-arrow" aria-hidden="true">↗</span>
         </a>
-        <a href="#contact" class="drawer-link">
+        <a href="#contact" class="drawer-link" id="contact-drawer-trigger">
           <span class="drawer-link-index">05</span>
           <span class="drawer-dot"></span>
           <span class="drawer-link-copy"><span class="drawer-link-title">Contact</span><span class="drawer-link-description">Start a project</span></span>
@@ -1114,6 +1114,135 @@
           <p class="select-final-notice">Product availability, specifications, and conditions are managed by the external retailer and may change without notice.</p>
           <button class="select-suggest-action" type="button" data-contact-action="suggest-product">Suggest a product</button>
         </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Editorial Glass Panel Overlay -->
+  <div class="contact-panel-overlay" id="contact-panel-overlay" role="dialog" aria-modal="true" aria-labelledby="contact-panel-title" aria-hidden="true">
+    <div class="contact-panel" id="contact-panel">
+      <!-- Close Button -->
+      <button class="contact-panel-close" id="contact-panel-close" aria-label="Close Contact Panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="contact-panel-content">
+        <header class="contact-panel-header">
+          <span class="contact-micro-label">START A CONVERSATION</span>
+          <h2 class="contact-panel-title" id="contact-panel-title">Let’s build something exceptional</h2>
+          <p class="contact-panel-intro">Tell us about your business, your idea, or the challenge you want to solve. ESY TECH CREATIVE will help you turn it into a clear, modern, and scalable solution.</p>
+          <p class="contact-panel-supporting">Whether you need a website, a custom application, AI automation, technical infrastructure, paid traffic management, video production, or mobile photography, we are ready to discuss your project.</p>
+        </header>
+
+        <div class="contact-grid">
+          <!-- Left Column (Form) -->
+          <div class="contact-column-left">
+            <form id="contact-project-form" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="contact-name">Name <span class="required">*</span></label>
+                <input type="text" id="contact-name" name="name" placeholder="Your name" aria-required="true">
+                <span class="error-message" id="error-name" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email">Email <span class="required">*</span></label>
+                <input type="email" id="contact-email" name="email" placeholder="you@company.com" aria-required="true">
+                <span class="error-message" id="error-email" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-company">Company or brand</label>
+                <input type="text" id="contact-company" name="company" placeholder="Company or brand name">
+                <span class="error-message" id="error-company" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-project-type">Project type <span class="required">*</span></label>
+                <select id="contact-project-type" name="project_type" aria-required="true">
+                  <option value="" disabled selected>Select project type</option>
+                  <option value="Intelligent Website">Intelligent Website</option>
+                  <option value="Custom Web Application">Custom Web Application</option>
+                  <option value="Artificial Intelligence & Automation">Artificial Intelligence & Automation</option>
+                  <option value="Cloud & Infrastructure">Cloud & Infrastructure</option>
+                  <option value="Networks & Technical Solutions">Networks & Technical Solutions</option>
+                  <option value="Paid Traffic Management">Paid Traffic Management</option>
+                  <option value="Video Production">Video Production</option>
+                  <option value="Mobile Photography">Mobile Photography</option>
+                  <option value="Creative Digital Experience">Creative Digital Experience</option>
+                  <option value="Other">Other</option>
+                </select>
+                <span class="error-message" id="error-project-type" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-budget">Estimated budget</label>
+                <select id="contact-budget" name="budget">
+                  <option value="" disabled selected>Select estimated budget (optional)</option>
+                  <option value="To be discussed">To be discussed</option>
+                  <option value="Less than €1,000">Less than €1,000</option>
+                  <option value="€1,000 – €3,000">€1,000 – €3,000</option>
+                  <option value="€3,000 – €7,000">€3,000 – €7,000</option>
+                  <option value="More than €7,000">More than €7,000</option>
+                </select>
+                <span class="error-message" id="error-budget" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Message <span class="required">*</span></label>
+                <textarea id="contact-message" name="message" placeholder="Tell us about your idea, objectives, timeline, or current challenge." aria-required="true"></textarea>
+                <span class="error-message" id="error-message" aria-live="polite"></span>
+              </div>
+
+              <p class="contact-privacy-notice">By sending this request, you agree to be contacted by ESY TECH CREATIVE regarding your project.</p>
+
+              <button type="submit" class="btn btn-primary contact-submit-btn">Send project request</button>
+            </form>
+          </div>
+
+          <!-- Right Column (Direct Contact Info) -->
+          <div class="contact-column-right">
+            <!-- WhatsApp Glass Contact Card -->
+            <div class="contact-info-card">
+              <span class="contact-micro-label">DIRECT CONTACT</span>
+              <h3 class="contact-info-card-title">Prefer to talk directly?</h3>
+              <p>Send us a message on WhatsApp and tell us briefly what you need.</p>
+              <a href="https://wa.me/33749795786?text=Hello%20ESY%20TECH%20CREATIVE%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="btn btn-primary contact-whatsapp-direct-btn">Talk on WhatsApp</a>
+              <div style="margin-top: 15px; font-weight: 600; font-size: 0.9rem; color: #ffffff;">+33 7 49 79 57 86</div>
+            </div>
+
+            <!-- Location Block -->
+            <div class="contact-info-block">
+              <h4>Location</h4>
+              <p>Paris, France</p>
+              <span>Remote projects worldwide</span>
+            </div>
+
+            <!-- Response Expectation Block -->
+            <div class="contact-info-block">
+              <h4>Response</h4>
+              <p>We aim to respond to project enquiries as soon as possible.</p>
+            </div>
+
+            <!-- Services Summary Block -->
+            <div class="contact-info-block contact-services-summary">
+              <h4>What can we help you with?</h4>
+              <div class="contact-services-grid">
+                <span class="contact-service-tag">Web Development</span>
+                <span class="contact-service-tag">Custom Applications</span>
+                <span class="contact-service-tag">AI & Automation</span>
+                <span class="contact-service-tag">Cloud Infrastructure</span>
+                <span class="contact-service-tag">Network Solutions</span>
+                <span class="contact-service-tag">Paid Traffic</span>
+                <span class="contact-service-tag">Video Production</span>
+                <span class="contact-service-tag">Mobile Photography</span>
+                <span class="contact-service-tag">Digital Experiences</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
